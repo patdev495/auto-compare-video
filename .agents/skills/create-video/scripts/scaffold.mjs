@@ -21,6 +21,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const HF_FALLBACK_VERSION = "0.7.58";
 const REFERENCE_VIDEOS = ["dev-vs-devops", "thien-thach-vs-sao-bang"];
 const REFERENCE_SCRIPTS = ["sync-channel.mjs", "generate-vo.mjs"];
+const HOST_ASSET_NAMES = ["point-left.png", "point-right.png"];
 const SKILL_SCRIPTS = ["plan-timing.mjs"];
 const NPM_SCRIPTS = {
   "sync-channel": "node scripts/sync-channel.mjs",
@@ -181,6 +182,18 @@ for (const f of SKILL_SCRIPTS) {
   }
   fs.copyFileSync(path.join(__dirname, f), to);
   console.log(`      - copy ${f}`);
+}
+const sourceHost = path.join(__dirname, "..", "assets", "host");
+const targetHost = path.join(target, "assets", "host");
+fs.mkdirSync(targetHost, { recursive: true });
+for (const f of HOST_ASSET_NAMES) {
+  const to = path.join(targetHost, f);
+  if (fs.existsSync(to)) {
+    console.log(`      - giữ host ${f} (đã có)`);
+    continue;
+  }
+  fs.copyFileSync(path.join(sourceHost, f), to);
+  console.log(`      - copy host ${f}`);
 }
 
 // ---------- 5. wire package.json ----------

@@ -11,9 +11,9 @@ Copy nguyên cấu trúc, chỉ đổi những gì liệt kê ở mục "Đổi 
 - Biến CSS `:root` (bảng màu series).
 - Toàn bộ rule `.card`, `.card-icon`, `.card-label`, `#vs-badge`, `.caption-line`,
   `.caption-line-text`, `.kw`, `#eyebrow`, `#ghost-word`, `#glow-top`, `#glow-bottom`,
-  và toàn bộ avatar teen mặc áo bomber (`#avatar-host`, `#avatar-body`, `#arm-left`,
-  `#arm-right`, `#mouth`, `.bomber-zip`, `.hair-base`, các mắt/lông mày).
-- Helper JS: `showLine()`, `pose()`, `headTilt()`, `talk()`, và 2 tween ambient glow
+  và host PNG `#avatar-host` / `.host-pose`. Luôn dùng hai file scaffold đã chép vào video:
+  `assets/host/point-left.png` và `assets/host/point-right.png`; không dựng lại nhân vật CSS.
+- Helper JS: `showLine()`, `pose()`, `talk()`, và 2 tween ambient glow
   phase-opposed ở cuối timeline.
 - Khai báo timeline: `gsap.timeline({ paused: true })` + `window.__timelines["main"] = tl;`
   ở cuối script.
@@ -75,18 +75,17 @@ Template gốc có 5 beat cho 8 dòng. Video mới dùng arc đã được helpe
 ```js
 const capOut = (n) => VO[n].start + VO[n].dur + 0.25;
 
-// BEAT 1: HOOK (line 1-2) — pose chỉ trái rồi chỉ phải
-pose(115, -8, VO[1].start, 0.3);   showLine("#line-1", VO[1].start, capOut(1));  talk(...);
-pose(8, -115, VO[2].start, 0.3);   showLine("#line-2", VO[2].start, capOut(2));  talk(...);
+// BEAT 1: HOOK (line 1-2) — swap pose chỉ trái rồi chỉ phải
+pose("left", VO[1].start, 0.3);   showLine("#line-1", VO[1].start, capOut(1));  talk(...);
+pose("right", VO[2].start, 0.3);  showLine("#line-2", VO[2].start, capOut(2));  talk(...);
 
-// BEAT 2: NÚT THẮT (line 3) — shrug + headTilt, trả tilt về 0 ở capOut(3)
-pose(55, -55, VO[3].start, 0.35);  headTilt(6, VO[3].start, 0.35);
-showLine("#line-3", VO[3].start, capOut(3));  talk(...);  headTilt(0, capOut(3), 0.3);
+// BEAT 2: NÚT THẮT (line 3) — dùng pose trái hoặc phải, không biến dạng artwork
+pose("left", VO[3].start, 0.35);  showLine("#line-3", VO[3].start, capOut(3));  talk(...);
 
 // BEAT 3: GIẢI A (2–4 line) — active-side emphasis: card-left sáng, card-right dim
 tl.to("#card-left",  { scale: 1.05, opacity: 1,    duration: 0.4, ease: "power2.out" }, VO[4].start);
 tl.to("#card-right", { scale: 0.96, opacity: 0.55, duration: 0.4, ease: "power2.out" }, VO[4].start);
-pose(75, -8, VO[4].start, 0.3);
+pose("left", VO[4].start, 0.3);
 // Một showLine + talk cho từng line thuộc reveal-a
 
 // BEAT 4: GIẢI B (2–4 line) — đảo emphasis sang card-right
@@ -97,8 +96,8 @@ pose(75, -8, VO[4].start, 0.3);
 // có thể nhấp nháy nhẹ luân phiên 2 card theo từng dòng. Một nuance line (nếu có) chỉ được
 // dùng để làm rõ boundary/exception, không để kéo dài runtime.
 
-// BEAT 6: PAYOFF (line cuối) — cả 2 card scale 1 / opacity 1, pose neutral (8, -8),
-// avatar-body punch nhẹ (yoyo repeat 1), verdict badge pop:
+// BEAT 6: PAYOFF (line cuối) — cả 2 card scale 1 / opacity 1, giữ một pose,
+// avatar-host punch nhẹ (yoyo repeat 1), verdict badge pop:
 const LAST_LINE = Object.keys(VO).length;
 tl.fromTo("#verdict-left",  { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[LAST_LINE].start + 0.15);
 tl.fromTo("#verdict-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[LAST_LINE].start + 0.25);

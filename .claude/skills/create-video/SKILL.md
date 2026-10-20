@@ -159,8 +159,9 @@ Ví dụ tính đầy đủ: `references/script-and-timing.md`.
 ### 5. Dựng `index.html`
 
 Copy cấu trúc từ `videos/dev-vs-devops/index.html`, **giữ nguyên**: biến CSS `:root`, `.card`,
-`.caption-line` / `.caption-line-text`, `.kw`, avatar `#arm-left` / `#arm-right` / `#mouth`,
-toàn bộ helper JS `showLine` / `pose` / `headTilt` / `talk` / glow ambient, **và khối
+`.caption-line` / `.caption-line-text`, `.kw`, host ảnh PNG mặc định `#avatar-host` (hai pose
+`assets/host/point-left.png` / `assets/host/point-right.png`; không dựng lại bằng CSS),
+toàn bộ helper JS `showLine` / `pose` / `talk` / glow ambient, **và khối
 `@font-face` trong `<head>`**.
 
 Chỉ đổi: `<title>`, 2 icon card, `.card-label`, 10–16 dòng `.caption-line`, `data-duration` của

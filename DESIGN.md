@@ -61,13 +61,13 @@ center** (x=540) with symmetric left/right padding — see Safe zone below.
 - **Middle — caption zone** (`y 840–1300`, 460px): one caption line visible at a time,
   centered, max-width 860px, left=110 (symmetric 110px margins). Keyword spans get
   `--accent-keyword`.
-- **Bottom — avatar zone** (`y 1280–1920`, 640px): a flat CSS/SVG 2D teen host
-  (`#avatar-host` top=1280, left=330, horizontally centered like every other zone) — original,
-  non-portrait character with a playful side-swept **red** spiky undercut, faded sides, mischievous
-  brows, a slim teen silhouette (narrow shoulders and long, lean arms), a dark bomber jacket, white
-  T-shirt and small accent chain. Arms swap rotation per beat (point-left /
-  point-right / shrug / explain / neutral-hold). Top raised from the original y=1360 so the
-  head/face clears the platform caption/username band — see Safe zone.
+- **Bottom — avatar zone** (`y 1240–1920`, 680px): use the supplied transparent host artwork,
+  never a CSS redraw. Every video receives `assets/host/point-left.png` and
+  `assets/host/point-right.png`: the same glasses-wearing, playful character in a teal shirt,
+  pointing at the upper-left or upper-right card. Place both in `#avatar-host` and swap/fade the
+  appropriate PNG per beat; the left-card explanation uses `point-left`, the right-card explanation
+  uses `point-right`. The head and upper body must remain above the platform caption band — see
+  Safe zone.
 
 ## Safe zone (platform UI overlays)
 
@@ -106,9 +106,9 @@ with no `top`/`left` adapt automatically.
   scale-punch (1→1.15→1, 0.25s) timed to the line's entrance — a simplified,
   line-level cousin of `asr-keyword-glow` (no continuous per-word envelope; this is a
   30-40s fast-cut format, not a lyric-video read).
-- **Avatar arms**: discrete rotation tweens per beat, `power3.out`, ~0.3s — point-left,
-  point-right, shrug (both arms up+out), explain (one arm lower, open palm), neutral
-  (arms at rest) for the outro hold.
+- **Avatar pose**: swap the supplied left/right PNG on beat changes with a short `power3.out`
+  fade/scale (~0.3s). A finite subtle vertical speaking bounce is allowed; do not redraw or rotate
+  individual limbs in CSS.
 - **Active-side emphasis**: during Giải A / Giải B, the inactive card dims to 55% opacity +
   scales to 0.96; the active card stays at full opacity/scale — directs the eye without a
   camera move (`camera-static` — the split symmetry is the subject early, but attention

@@ -561,6 +561,26 @@
         border-radius: 45% 45% 55% 55%;
         background: #dca47f;
       }
+
+      /* Supplied host artwork: keep the reusable character intact, only swap poses. */
+      #avatar-host {
+        top: 1240px;
+        left: 260px;
+        width: 560px;
+        height: 680px;
+        transform-origin: 50% 100%;
+      }
+      .host-pose {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        opacity: 0;
+        transform-origin: 50% 100%;
+        will-change: transform, opacity;
+      }
     </style>
   </head>
   <body>
@@ -598,7 +618,7 @@
         <div data-hf-id="hf-98lu" id="verdict-right" class="verdict-badge">✕</div>
 
         <!-- middle: captions -->
-        <div data-hf-id="hf-n7e7" id="eyebrow">Robot Thông Thái</div>
+        <div data-hf-id="hf-n7e7" id="eyebrow">Ngố thông thái</div>
         <div data-hf-id="hf-7yco" id="caption-zone">
           <div data-hf-id="hf-ltvs" class="caption-line" id="line-1"><span data-hf-id="hf-xpmn" class="caption-line-text">Đây là <span data-hf-id="hf-mhqo" class="kw" style="color: var(--accent-cyan)">DEV</span></span></div>
           <div data-hf-id="hf-bkjz" class="caption-line" id="line-2"><span data-hf-id="hf-25tr" class="caption-line-text">Đây là <span data-hf-id="hf-8hi4" class="kw" style="color: var(--accent-cyan)">DEVOPS</span></span></div>
@@ -610,28 +630,10 @@
           <div data-hf-id="hf-1ret" class="caption-line" id="line-8"><span data-hf-id="hf-isa5" class="caption-line-text">Một bên <span data-hf-id="hf-kmkt" class="kw">TẠO RA</span> sản phẩm — một bên <span data-hf-id="hf-d4g2" class="kw">GIỮ NÓ SỐNG.</span> Dev xây, DevOps vận hành!</span></div>
         </div>
 
-        <!-- bottom: default teen 2D host -->
+        <!-- bottom: supplied transparent host artwork; each pose points to its card -->
         <div data-hf-id="hf-bs5l" id="avatar-host">
-          <div data-hf-id="hf-4617" id="avatar-body">
-            <div class="tee"></div>
-            <div class="bomber-zip"></div>
-            <div class="chain"></div>
-          </div>
-          <div data-hf-id="hf-9f5w" id="arm-left" class="arm"><div data-hf-id="hf-foeb" class="hand"></div></div>
-          <div data-hf-id="hf-2ovv" id="arm-right" class="arm"><div data-hf-id="hf-xbk3" class="hand"></div></div>
-          <div data-hf-id="hf-bf2l" id="avatar-head">
-            <div class="hair-base"></div>
-            <div class="hair-spike spike-1"></div>
-            <div class="hair-spike spike-2"></div>
-            <div class="hair-spike spike-3"></div>
-            <div class="hair-fade fade-left"></div>
-            <div class="hair-fade fade-right"></div>
-            <div class="brow brow-left"></div>
-            <div class="brow brow-right"></div>
-            <div data-hf-id="hf-y4ty" class="eye" id="eye-left"></div>
-            <div data-hf-id="hf-7vpp" class="eye" id="eye-right"></div>
-            <div data-hf-id="hf-6l22" id="mouth"></div>
-          </div>
+          <img id="host-point-left" class="host-pose" src="assets/host/point-left.png" alt="" />
+          <img id="host-point-right" class="host-pose" src="assets/host/point-right.png" alt="" />
         </div>
       </section>
 
@@ -678,31 +680,25 @@
         });
       }
 
-      // ---------- avatar pose helper ----------
-      // power3.out discrete rotation tween per gesture; targets are hand-authored angles.
-      function pose(leftDeg, rightDeg, at, dur) {
-        tl.to("#arm-left", { rotation: leftDeg, duration: dur, ease: "power3.out" }, at);
-        tl.to("#arm-right", { rotation: rightDeg, duration: dur, ease: "power3.out" }, at);
+      // ---------- supplied avatar pose helper ----------
+      // The artwork already contains each pointing gesture; swap it rather than redrawing a host.
+      function pose(side, at, dur) {
+        const active = side === "right" ? "#host-point-right" : "#host-point-left";
+        const inactive = side === "right" ? "#host-point-left" : "#host-point-right";
+        tl.to(inactive, { opacity: 0, duration: Math.min(dur, 0.16), ease: "power2.out" }, at);
+        tl.fromTo(active, { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: dur, ease: "power3.out" }, at);
       }
-      function headTilt(deg, at, dur) {
-        tl.to("#avatar-head", { rotation: deg, duration: dur, ease: "power3.out" }, at);
-      }
-      // finite "talking" mouth wiggle across a speaking window
+      // finite, deterministic speaking bounce across a narration window
       function talk(startAt, endAt) {
-        const cycle = 0.22;
+        const cycle = 0.28;
         const reps = Math.max(0, Math.floor((endAt - startAt) / cycle) - 1);
         tl.to(
-          "#mouth",
-          { scaleY: 0.4, duration: cycle / 2, ease: "power1.inOut", yoyo: true, repeat: reps },
+          "#avatar-host",
+          { y: -7, duration: cycle / 2, ease: "sine.inOut", yoyo: true, repeat: reps },
           startAt,
         );
-        tl.set("#mouth", { scaleY: 1 }, endAt);
+        tl.set("#avatar-host", { y: 0 }, endAt);
       }
-
-      // Arm geometry note: both arm divs hang straight down at rotation:0 (identical
-      // local coordinates), so they are NOT mirrored automatically. A POSITIVE rotation
-      // swings the LEFT arm outward-left; a NEGATIVE rotation swings the RIGHT arm
-      // outward-right. Always pass opposite-signed magnitudes for a mirrored pose.
 
       // ---------- VO-driven beat timing ----------
       // Real VieNeu clip durations (assets/vo/durations.json) drive every beat —
@@ -721,25 +717,23 @@
       const capOut = (n) => VO[n].start + VO[n].dur + 0.25;
 
       // ---------- BEAT 1: HOOK ----------
-      pose(115, -8, VO[1].start, 0.3);
+      pose("left", VO[1].start, 0.3);
       showLine("#line-1", VO[1].start, capOut(1));
       talk(VO[1].start, VO[1].start + VO[1].dur);
 
-      pose(8, -115, VO[2].start, 0.3);
+      pose("right", VO[2].start, 0.3);
       showLine("#line-2", VO[2].start, capOut(2));
       talk(VO[2].start, VO[2].start + VO[2].dur);
 
       // ---------- BEAT 2: QUESTION ----------
-      pose(55, -55, VO[3].start, 0.35);
-      headTilt(6, VO[3].start, 0.35);
+      pose("left", VO[3].start, 0.35);
       showLine("#line-3", VO[3].start, capOut(3));
       talk(VO[3].start, VO[3].start + VO[3].dur);
-      headTilt(0, capOut(3), 0.3);
 
       // ---------- BEAT 3: GIẢI A (DEV) ----------
       tl.to("#card-left", { scale: 1.05, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[4].start);
       tl.to("#card-right", { scale: 0.96, opacity: 0.55, duration: 0.4, ease: "power2.out" }, VO[4].start);
-      pose(75, -8, VO[4].start, 0.3);
+      pose("left", VO[4].start, 0.3);
       showLine("#line-4", VO[4].start, capOut(4));
       talk(VO[4].start, VO[4].start + VO[4].dur);
       showLine("#line-5", VO[5].start, capOut(5));
@@ -748,7 +742,7 @@
       // ---------- BEAT 4: GIẢI B (DEVOPS) ----------
       tl.to("#card-left", { scale: 0.96, opacity: 0.55, duration: 0.4, ease: "power2.out" }, VO[6].start);
       tl.to("#card-right", { scale: 1.05, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[6].start);
-      pose(8, -75, VO[6].start, 0.3);
+      pose("right", VO[6].start, 0.3);
       showLine("#line-6", VO[6].start, capOut(6));
       talk(VO[6].start, VO[6].start + VO[6].dur);
       showLine("#line-7", VO[7].start, capOut(7));
@@ -757,9 +751,9 @@
       // ---------- BEAT 5: PAYOFF ----------
       tl.to("#card-left", { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[8].start);
       tl.to("#card-right", { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[8].start);
-      pose(8, -8, VO[8].start, 0.3);
+      pose("left", VO[8].start, 0.3);
       tl.fromTo(
-        "#avatar-body",
+        "#avatar-host",
         { scale: 1 },
         { scale: 1.04, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 },
         VO[8].start,
