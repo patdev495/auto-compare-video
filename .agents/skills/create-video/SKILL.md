@@ -16,7 +16,7 @@ description: >
 
 Sinh ra một thư mục `videos/<slug>/` hoàn chỉnh, tự chạy được (`npm run check` sạch,
 `npm run render` ra MP4), theo đúng layout/nhịp cố định của series: 2 card khái niệm ở nửa
-trên, caption chạy từng dòng ở giữa, avatar robot MC ở nửa dưới; kịch bản linh hoạt 10–16 dòng,
+trên, caption chạy từng dòng ở giữa, host 2D trẻ trung ở nửa dưới; kịch bản linh hoạt 10–16 dòng,
 voiceover TTS đo thời lượng thật để khớp animation.
 
 Mỗi video là một project HyperFrames độc lập. **Chỉ đổi nội dung — không đổi layout.**
@@ -159,7 +159,8 @@ Ví dụ tính đầy đủ: `references/script-and-timing.md`.
 ### 5. Dựng `index.html`
 
 Copy cấu trúc từ `videos/dev-vs-devops/index.html`, **giữ nguyên**: biến CSS `:root`, `.card`,
-`.caption-line` / `.caption-line-text`, `.kw`, avatar `#arm-left` / `#arm-right` / `#mouth`,
+`.caption-line` / `.caption-line-text`, `.kw`, host 2D mặc định `#avatar-host` (gồm tóc, mặt,
+áo và `#arm-left` / `#arm-right` / `#mouth`),
 toàn bộ helper JS `showLine` / `pose` / `headTilt` / `talk` / glow ambient, **và khối
 `@font-face` trong `<head>`**.
 

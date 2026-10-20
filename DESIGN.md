@@ -61,12 +61,12 @@ center** (x=540) with symmetric left/right padding — see Safe zone below.
 - **Middle — caption zone** (`y 840–1300`, 460px): one caption line visible at a time,
   centered, max-width 860px, left=110 (symmetric 110px margins). Keyword spans get
   `--accent-keyword`.
-- **Bottom — avatar zone** (`y 1280–1920`, 640px): a flat CSS/SVG 2D robot host character
-  (`#avatar-host` top=1280, left=330, horizontally centered like every other zone) — rounded-rect
-  head with a glowing antenna tip, an LED-style visor with two square eyes, a speaker-bar mouth,
-  rectangular mechanical arms, and a glowing chest light on the torso. Arms swap rotation per
-  beat (point-left / point-right / shrug / explain / neutral-hold). Top raised from the original
-  y=1360 so the head/face clears the platform caption/username band — see Safe zone.
+- **Bottom — avatar zone** (`y 1280–1920`, 640px): a flat CSS/SVG 2D teen host
+  (`#avatar-host` top=1280, left=330, horizontally centered like every other zone) — original,
+  non-portrait character with a side-swept spiky undercut, faded sides, expressive brows, a dark
+  bomber jacket, white T-shirt and small accent chain. Arms swap rotation per beat (point-left /
+  point-right / shrug / explain / neutral-hold). Top raised from the original y=1360 so the
+  head/face clears the platform caption/username band — see Safe zone.
 
 ## Safe zone (platform UI overlays)
 
