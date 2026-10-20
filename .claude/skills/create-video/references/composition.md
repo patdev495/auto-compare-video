@@ -11,8 +11,8 @@ Copy nguyên cấu trúc, chỉ đổi những gì liệt kê ở mục "Đổi 
 - Biến CSS `:root` (bảng màu series).
 - Toàn bộ rule `.card`, `.card-icon`, `.card-label`, `#vs-badge`, `.caption-line`,
   `.caption-line-text`, `.kw`, `#eyebrow`, `#ghost-word`, `#glow-top`, `#glow-bottom`,
-  và toàn bộ avatar (`#avatar-host`, `#avatar-body`, `#arm-left`, `#arm-right`, `#mouth`,
-  `#antenna`, mắt/visor).
+  và toàn bộ avatar teen mặc áo bomber (`#avatar-host`, `#avatar-body`, `#arm-left`,
+  `#arm-right`, `#mouth`, `.bomber-zip`, `.hair-base`, các mắt/lông mày).
 - Helper JS: `showLine()`, `pose()`, `headTilt()`, `talk()`, và 2 tween ambient glow
   phase-opposed ở cuối timeline.
 - Khai báo timeline: `gsap.timeline({ paused: true })` + `window.__timelines["main"] = tl;`

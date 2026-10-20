@@ -43,7 +43,9 @@ const VOICE_CODE = ENV.VBEE_VOICE_CODE || "n_hanoi_male_protrainer_education_vc"
 // --- Edge TTS config (only required when TTS_PROVIDER=edge) ---
 const EDGE_VOICE = ENV.EDGE_VOICE || "vi-VN-NamMinhNeural";
 
-const SPEED_RATE = 1.1;
+// A slightly calmer delivery keeps the 12 essential explanation beats within
+// the series' 30–40 second target without adding filler lines.
+const SPEED_RATE = 0.9;
 
 if (TTS_PROVIDER === "vbee") {
   if (!VBEE_APP_ID || !VBEE_ACCESS_TOKEN) {
@@ -63,12 +65,16 @@ const LINES = [
   { id: "line-4", text: "Mua cổ phiếu là sở hữu một phần doanh nghiệp." },
   { id: "line-5", text: "Lợi nhuận đến từ tăng giá và cổ tức." },
   { id: "line-6", text: "Nhưng giá biến động, lợi nhuận không được cam kết." },
-  { id: "line-7", text: "Mua trái phiếu là cho tổ chức vay tiền." },
-  { id: "line-8", text: "Bạn nhận lãi định kỳ, rồi được hoàn gốc khi đáo hạn." },
-  { id: "line-9", text: "Rủi ro thường thấp hơn, đổi lại lợi nhuận tiềm năng thấp hơn." },
-  { id: "line-10", text: "Cổ phiếu ưu tiên tăng trưởng, trái phiếu ưu tiên thu nhập ổn định." },
-  { id: "line-11", text: "Danh mục cân bằng có thể kết hợp cả hai theo mục tiêu." },
-  { id: "line-12", text: "Muốn tăng trưởng dài hạn? Cổ phiếu. Muốn ổn định? Trái phiếu." },
+  { id: "line-7", text: "Cổ tức cũng không phải lời hứa chắc chắn." },
+  { id: "line-8", text: "Mua trái phiếu là cho chính phủ hoặc doanh nghiệp vay." },
+  { id: "line-9", text: "Bên phát hành hứa trả lãi định kỳ." },
+  { id: "line-10", text: "Đến hạn, họ hoàn lại số tiền gốc cho bạn." },
+  { id: "line-11", text: "Vẫn có rủi ro tổ chức vay không trả được nợ." },
+  { id: "line-12", text: "Cổ phiếu: tiềm năng tăng trưởng cao, giá biến động mạnh." },
+  { id: "line-13", text: "Trái phiếu: thu nhập dễ đoán hơn, thường ổn định hơn." },
+  { id: "line-14", text: "Nhưng trái phiếu vẫn có thể giảm giá khi lãi suất tăng." },
+  { id: "line-15", text: "Có thể kết hợp cả hai theo mục tiêu của bạn." },
+  { id: "line-16", text: "Muốn tăng trưởng dài hạn? Cổ phiếu. Muốn ổn định? Trái phiếu." },
 ];
 
 // ============================================================

@@ -438,35 +438,50 @@
         background: var(--accent-cyan);
       }
 
-      /* ---------- illustrated finance host: original, non-portrait character ---------- */
+      /* ---------- default teen host: playful red hair + dark bomber jacket ---------- */
       #avatar-body {
-        left: 88px;
-        top: 205px;
-        background: #203d42;
-        border-radius: 48px 48px 22px 22px;
+        left: 115px;
+        top: 192px;
+        width: 190px;
+        height: 288px;
+        background: linear-gradient(135deg, #26394d 0%, #132434 62%, #0c1926 100%);
+        border: 3px solid #3a526a;
+        border-radius: 44px 44px 20px 20px;
         overflow: hidden;
       }
-      .shirt {
+      .tee {
         position: absolute;
-        left: 72px;
+        left: 51px;
         top: 0;
-        width: 96px;
-        height: 150px;
+        width: 86px;
+        height: 184px;
         background: var(--fg);
-        clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%);
+        border-radius: 0 0 38px 38px;
       }
-      .tie {
+      .bomber-zip {
         position: absolute;
-        left: 106px;
-        top: 26px;
-        width: 28px;
-        height: 116px;
-        background: var(--accent-pink);
-        clip-path: polygon(0 0, 100% 0, 76% 29%, 80% 85%, 50% 100%, 20% 85%, 24% 29%);
+        left: 91px;
+        top: 0;
+        width: 8px;
+        height: 238px;
+        background: #8ca79d;
+        opacity: 0.85;
+      }
+      .chain {
+        position: absolute;
+        top: 25px;
+        left: 70px;
+        width: 48px;
+        height: 34px;
+        border: 6px solid var(--accent-pink);
+        border-top: 0;
+        border-radius: 0 0 50% 50%;
       }
       #avatar-head {
-        left: 105px;
-        top: 28px;
+        left: 120px;
+        top: 18px;
+        width: 180px;
+        height: 194px;
         background: #dca47f;
         border-radius: 50% 50% 44% 44%;
         overflow: visible;
@@ -474,72 +489,82 @@
       .hair-base {
         position: absolute;
         top: -20px;
-        left: 10px;
-        width: 190px;
-        height: 95px;
-        background: #142126;
+        left: 8px;
+        width: 166px;
+        height: 82px;
+        background: #a92f2d;
         border-radius: 64% 28% 24% 18%;
         transform: skewX(-14deg) rotate(-8deg);
         transform-origin: bottom left;
       }
       .hair-spike {
         position: absolute;
-        width: 42px;
-        height: 88px;
-        background: #142126;
+        width: 36px;
+        height: 76px;
+        background: #ed5a3f;
         border-radius: 82% 20% 20% 14%;
         transform-origin: bottom center;
       }
-      .spike-1 { top: -38px; left: 24px; transform: rotate(-32deg); }
-      .spike-2 { top: -48px; left: 64px; transform: rotate(-18deg); }
-      .spike-3 { top: -40px; left: 108px; transform: rotate(-5deg); }
+      .spike-1 { top: -35px; left: 16px; transform: rotate(-36deg); }
+      .spike-2 { top: -45px; left: 52px; transform: rotate(-16deg); }
+      .spike-3 { top: -35px; left: 92px; transform: rotate(8deg); }
       .hair-fade {
         position: absolute;
         top: 30px;
         width: 25px;
-        height: 72px;
-        background: linear-gradient(#314247 0%, #dca47f 100%);
+        height: 65px;
+        background: linear-gradient(#7d2328 0%, #dca47f 100%);
       }
       .fade-left { left: -2px; border-radius: 60% 12% 45% 25%; }
       .fade-right { right: -2px; border-radius: 12% 60% 25% 45%; }
+      .brow {
+        position: absolute;
+        top: 93px;
+        width: 35px;
+        height: 8px;
+        background: #172033;
+        border-radius: 999px;
+      }
+      .brow-left { top: 80px; left: 45px; transform: rotate(-16deg); }
+      .brow-right { top: 92px; left: 103px; transform: rotate(6deg); }
       .eye {
-        top: 110px;
-        width: 14px;
-        height: 14px;
+        top: 104px;
+        width: 13px;
+        height: 13px;
         border-radius: 50%;
         background: #172033;
       }
-      #eye-left { left: 67px; }
-      #eye-right { left: 129px; }
+      #eye-left { left: 54px; }
+      #eye-right { left: 112px; }
       #mouth {
-        top: 158px;
-        left: 82px;
-        width: 46px;
+        top: 147px;
+        left: 68px;
+        width: 42px;
         height: 8px;
-        border-radius: 999px;
+        border-radius: 3px 3px 999px 999px;
         background: #8e3b46;
       }
       .arm {
-        top: 214px;
-        width: 40px;
-        height: 184px;
-        border-radius: 22px;
-        background: #203d42;
+        top: 205px;
+        width: 30px;
+        height: 205px;
+        border-radius: 18px;
+        background: #26394d;
       }
-      #arm-left { left: 65px; }
-      #arm-right { left: 315px; }
+      #arm-left { left: 96px; }
+      #arm-right { left: 294px; }
       .hand {
         bottom: -18px;
-        left: 2px;
-        width: 36px;
-        height: 42px;
+        left: 1px;
+        width: 28px;
+        height: 34px;
         border-radius: 45% 45% 55% 55%;
         background: #dca47f;
       }
     </style>
   </head>
   <body>
-    <div data-hf-id="hf-nu5b" id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="39.79">
+    <div data-hf-id="hf-nu5b" id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="37.522">
       <section data-hf-id="hf-xtla" id="scene">
         <div data-hf-id="hf-dwsk" id="glow-top" class="glow"></div>
         <div data-hf-id="hf-omk6" id="glow-bottom" class="glow"></div>
@@ -561,9 +586,9 @@
           <div data-hf-id="hf-88o4" class="card-icon">
             <div data-hf-id="hf-47s3" id="devops-panel"></div>
             <svg data-hf-id="hf-lze8" viewBox="0 0 240 150" width="240" height="150" style="position: absolute; top: 165px; left: 80px">
-              <rect x="16" y="12" width="208" height="126" rx="12" fill="none" stroke="var(--fg)" stroke-width="10" />
-              <path d="M42 55 H198 M42 88 H160 M42 112 H126" stroke="var(--accent-pink)" stroke-width="10" stroke-linecap="round" />
-              <circle cx="191" cy="102" r="15" fill="var(--accent-cyan)" />
+              <rect data-hf-id="hf-gnto" x="16" y="12" width="208" height="126" rx="12" fill="none" stroke="var(--fg)" stroke-width="10" />
+              <path data-hf-id="hf-d14c" d="M42 55 H198 M42 88 H160 M42 112 H126" stroke="var(--accent-pink)" stroke-width="10" stroke-linecap="round" />
+              <circle data-hf-id="hf-nhwq" cx="191" cy="102" r="15" fill="var(--accent-cyan)" />
             </svg>
           </div>
           <div data-hf-id="hf-gt4a" class="card-label">TRÁI PHIẾU</div>
@@ -575,35 +600,42 @@
         <!-- middle: captions -->
         <div data-hf-id="hf-n7e7" id="eyebrow">Robot Thông Thái</div>
         <div data-hf-id="hf-7yco" id="caption-zone">
-          <div class="caption-line" id="line-1"><span class="caption-line-text">Đây là <span class="kw" style="color: var(--accent-cyan)">CỔ PHIẾU</span></span></div>
-          <div class="caption-line" id="line-2"><span class="caption-line-text">Đây là <span class="kw" style="color: var(--accent-cyan)">TRÁI PHIẾU</span></span></div>
-          <div class="caption-line" id="line-3"><span class="caption-line-text">Khác nhau ở quyền sở hữu hay cho vay?</span></div>
-          <div class="caption-line" id="line-4"><span class="caption-line-text">Mua cổ phiếu là <span class="kw">SỞ HỮU</span> một phần doanh nghiệp</span></div>
-          <div class="caption-line" id="line-5"><span class="caption-line-text">Lợi nhuận đến từ <span class="kw">TĂNG GIÁ</span> và cổ tức</span></div>
-          <div class="caption-line" id="line-6"><span class="caption-line-text">Nhưng lợi nhuận <span class="kw">KHÔNG ĐƯỢC CAM KẾT</span></span></div>
-          <div class="caption-line" id="line-7"><span class="caption-line-text">Mua trái phiếu là <span class="kw">CHO VAY</span> tiền</span></div>
-          <div class="caption-line" id="line-8"><span class="caption-line-text">Nhận <span class="kw">LÃI ĐỊNH KỲ,</span> hoàn gốc khi đáo hạn</span></div>
-          <div class="caption-line" id="line-9"><span class="caption-line-text">Rủi ro thấp hơn, lợi nhuận tiềm năng cũng thấp hơn</span></div>
-          <div class="caption-line" id="line-10"><span class="caption-line-text">Cổ phiếu: <span class="kw">TĂNG TRƯỞNG.</span> Trái phiếu: thu nhập ổn định</span></div>
-          <div class="caption-line" id="line-11"><span class="caption-line-text">Có thể kết hợp cả hai theo <span class="kw">MỤC TIÊU</span></span></div>
-          <div class="caption-line" id="line-12"><span class="caption-line-text">Tăng trưởng: <span class="kw">CỔ PHIẾU.</span> Ổn định: trái phiếu</span></div>
+          <div data-hf-id="hf-01hr" class="caption-line" id="line-1"><span data-hf-id="hf-xpmn" class="caption-line-text">Đây là <span data-hf-id="hf-izxd" class="kw" style="color: var(--accent-cyan)">CỔ PHIẾU</span></span></div>
+          <div data-hf-id="hf-rdlw" class="caption-line" id="line-2"><span data-hf-id="hf-25tr" class="caption-line-text">Đây là <span data-hf-id="hf-q9la" class="kw" style="color: var(--accent-cyan)">TRÁI PHIẾU</span></span></div>
+          <div data-hf-id="hf-s59p" class="caption-line" id="line-3"><span data-hf-id="hf-yx23" class="caption-line-text">Khác nhau ở quyền sở hữu hay cho vay?</span></div>
+          <div data-hf-id="hf-awze" class="caption-line" id="line-4"><span data-hf-id="hf-beyc" class="caption-line-text">Mua cổ phiếu là <span data-hf-id="hf-0qfv" class="kw">SỞ HỮU</span> một phần doanh nghiệp</span></div>
+          <div data-hf-id="hf-ev3f" class="caption-line" id="line-5"><span data-hf-id="hf-gvwx" class="caption-line-text">Lợi nhuận đến từ <span data-hf-id="hf-boph" class="kw">TĂNG GIÁ</span> và cổ tức</span></div>
+          <div data-hf-id="hf-3zls" class="caption-line" id="line-6"><span data-hf-id="hf-h333" class="caption-line-text">Nhưng lợi nhuận <span data-hf-id="hf-5dgb" class="kw">KHÔNG ĐƯỢC CAM KẾT</span></span></div>
+          <div data-hf-id="hf-6yvd" class="caption-line" id="line-7"><span data-hf-id="hf-2n91" class="caption-line-text">Cổ tức <span data-hf-id="hf-afhc" class="kw">KHÔNG PHẢI</span> lời hứa chắc chắn</span></div>
+          <div data-hf-id="hf-niza" class="caption-line" id="line-8"><span data-hf-id="hf-oiod" class="caption-line-text">Mua trái phiếu là <span data-hf-id="hf-dmd9" class="kw">CHO VAY</span> chính phủ hoặc doanh nghiệp</span></div>
+          <div data-hf-id="hf-top3" class="caption-line" id="line-9"><span data-hf-id="hf-coca" class="caption-line-text">Bên phát hành hứa trả <span data-hf-id="hf-rdh4" class="kw">LÃI ĐỊNH KỲ</span></span></div>
+          <div data-hf-id="hf-05np" class="caption-line" id="line-10"><span data-hf-id="hf-7uoz" class="caption-line-text">Đến hạn, họ hoàn lại <span data-hf-id="hf-64gy" class="kw">TIỀN GỐC</span> cho bạn</span></div>
+          <div data-hf-id="hf-3fz0" class="caption-line" id="line-11"><span data-hf-id="hf-oxey" class="caption-line-text">Vẫn có rủi ro bên vay <span data-hf-id="hf-hgg1" class="kw">KHÔNG TRẢ NỢ</span></span></div>
+          <div data-hf-id="hf-c3uv" class="caption-line" id="line-12"><span data-hf-id="hf-w4ic" class="caption-line-text">Cổ phiếu: tăng trưởng cao, <span data-hf-id="hf-fo38" class="kw">BIẾN ĐỘNG MẠNH</span></span></div>
+          <div data-hf-id="hf-43rq" class="caption-line" id="line-13"><span data-hf-id="hf-19xb" class="caption-line-text">Trái phiếu: thu nhập dễ đoán, <span data-hf-id="hf-ok89" class="kw">ỔN ĐỊNH HƠN</span></span></div>
+          <div data-hf-id="hf-crnl" class="caption-line" id="line-14"><span data-hf-id="hf-bqjg" class="caption-line-text">Lãi suất tăng, trái phiếu cũng có thể <span data-hf-id="hf-sryh" class="kw">GIẢM GIÁ</span></span></div>
+          <div data-hf-id="hf-g1yw" class="caption-line" id="line-15"><span data-hf-id="hf-6r4a" class="caption-line-text">Có thể kết hợp cả hai theo <span data-hf-id="hf-syof" class="kw">MỤC TIÊU</span></span></div>
+          <div data-hf-id="hf-qxgj" class="caption-line" id="line-16"><span data-hf-id="hf-j8th" class="caption-line-text">Tăng trưởng: <span data-hf-id="hf-jvcc" class="kw">CỔ PHIẾU.</span> Ổn định: trái phiếu</span></div>
         </div>
 
         <!-- bottom: 2D avatar host -->
         <div data-hf-id="hf-bs5l" id="avatar-host">
           <div data-hf-id="hf-4617" id="avatar-body">
-            <div class="shirt"></div>
-            <div class="tie"></div>
+            <div data-hf-id="hf-4s34" class="tee"></div>
+            <div data-hf-id="hf-4tlm" class="bomber-zip"></div>
+            <div class="chain"></div>
           </div>
           <div data-hf-id="hf-9f5w" id="arm-left" class="arm"><div data-hf-id="hf-foeb" class="hand"></div></div>
           <div data-hf-id="hf-2ovv" id="arm-right" class="arm"><div data-hf-id="hf-xbk3" class="hand"></div></div>
           <div data-hf-id="hf-bf2l" id="avatar-head">
-            <div class="hair-base"></div>
-            <div class="hair-spike spike-1"></div>
-            <div class="hair-spike spike-2"></div>
-            <div class="hair-spike spike-3"></div>
-            <div class="hair-fade fade-left"></div>
-            <div class="hair-fade fade-right"></div>
+            <div data-hf-id="hf-m4dm" class="hair-base"></div>
+            <div data-hf-id="hf-rthl" class="hair-spike spike-1"></div>
+            <div data-hf-id="hf-vrlm" class="hair-spike spike-2"></div>
+            <div data-hf-id="hf-zppn" class="hair-spike spike-3"></div>
+            <div data-hf-id="hf-776v" class="hair-fade fade-left"></div>
+            <div data-hf-id="hf-v0pm" class="hair-fade fade-right"></div>
+            <div class="brow brow-left"></div>
+            <div class="brow brow-right"></div>
             <div data-hf-id="hf-y4ty" class="eye" id="eye-left"></div>
             <div data-hf-id="hf-7vpp" class="eye" id="eye-right"></div>
             <div data-hf-id="hf-6l22" id="mouth"></div>
@@ -612,18 +644,22 @@
       </section>
 
       <!-- narration: VieNeu TTS, one clip per caption line, direct root children -->
-      <audio id="vo-1" src="assets/vo/line-1.mp3" data-start="0.55" data-duration="1.2" data-track-index="20"></audio>
-      <audio id="vo-2" src="assets/vo/line-2.mp3" data-start="2.07" data-duration="1.2" data-track-index="20"></audio>
-      <audio id="vo-3" src="assets/vo/line-3.mp3" data-start="3.69" data-duration="2.4" data-track-index="20"></audio>
-      <audio id="vo-4" src="assets/vo/line-4.mp3" data-start="6.51" data-duration="2.72" data-track-index="20"></audio>
-      <audio id="vo-5" src="assets/vo/line-5.mp3" data-start="9.55" data-duration="2.48" data-track-index="20"></audio>
-      <audio id="vo-6" src="assets/vo/line-6.mp3" data-start="12.35" data-duration="2.8" data-track-index="20"></audio>
-      <audio id="vo-7" src="assets/vo/line-7.mp3" data-start="15.57" data-duration="2.8" data-track-index="20"></audio>
-      <audio id="vo-8" src="assets/vo/line-8.mp3" data-start="18.69" data-duration="3.36" data-track-index="20"></audio>
-      <audio id="vo-9" src="assets/vo/line-9.mp3" data-start="22.37" data-duration="3.6" data-track-index="20"></audio>
-      <audio id="vo-10" src="assets/vo/line-10.mp3" data-start="26.39" data-duration="4" data-track-index="20"></audio>
-      <audio id="vo-11" src="assets/vo/line-11.mp3" data-start="30.71" data-duration="3.52" data-track-index="20"></audio>
-      <audio id="vo-12" src="assets/vo/line-12.mp3" data-start="34.65" data-duration="3.84" data-track-index="20"></audio>
+      <audio data-hf-id="hf-sdxz" id="vo-1" src="assets/vo/line-1.mp3" data-start="0.55" data-duration="0.704" data-track-index="20"></audio>
+      <audio data-hf-id="hf-ha4q" id="vo-2" src="assets/vo/line-2.mp3" data-start="1.574" data-duration="1.792" data-track-index="20"></audio>
+      <audio data-hf-id="hf-pt1u" id="vo-3" src="assets/vo/line-3.mp3" data-start="3.786" data-duration="1.984" data-track-index="20"></audio>
+      <audio data-hf-id="hf-zte7" id="vo-4" src="assets/vo/line-4.mp3" data-start="6.19" data-duration="1.6" data-track-index="20"></audio>
+      <audio data-hf-id="hf-yxyw" id="vo-5" src="assets/vo/line-5.mp3" data-start="8.11" data-duration="1.344" data-track-index="20"></audio>
+      <audio data-hf-id="hf-ti9v" id="vo-6" src="assets/vo/line-6.mp3" data-start="9.774" data-duration="1.856" data-track-index="20"></audio>
+      <audio data-hf-id="hf-b3ox" id="vo-7" src="assets/vo/line-7.mp3" data-start="11.95" data-duration="1.664" data-track-index="20"></audio>
+      <audio data-hf-id="hf-8ouu" id="vo-8" src="assets/vo/line-8.mp3" data-start="14.034" data-duration="2.112" data-track-index="20"></audio>
+      <audio data-hf-id="hf-81io" id="vo-9" src="assets/vo/line-9.mp3" data-start="16.466" data-duration="1.28" data-track-index="20"></audio>
+      <audio data-hf-id="hf-h5t9" id="vo-10" src="assets/vo/line-10.mp3" data-start="18.066" data-duration="1.92" data-track-index="20"></audio>
+      <audio data-hf-id="hf-jcfj" id="vo-11" src="assets/vo/line-11.mp3" data-start="20.306" data-duration="1.728" data-track-index="20"></audio>
+      <audio data-hf-id="hf-bniw" id="vo-12" src="assets/vo/line-12.mp3" data-start="22.454" data-duration="2.304" data-track-index="20"></audio>
+      <audio data-hf-id="hf-k9kj" id="vo-13" src="assets/vo/line-13.mp3" data-start="25.078" data-duration="2.304" data-track-index="20"></audio>
+      <audio data-hf-id="hf-xeqd" id="vo-14" src="assets/vo/line-14.mp3" data-start="27.702" data-duration="2.304" data-track-index="20"></audio>
+      <audio data-hf-id="hf-w9xd" id="vo-15" src="assets/vo/line-15.mp3" data-start="30.426" data-duration="2.688" data-track-index="20"></audio>
+      <audio data-hf-id="hf-veng" id="vo-16" src="assets/vo/line-16.mp3" data-start="33.534" data-duration="2.688" data-track-index="20"></audio>
     </div>
 
     <script>
@@ -689,10 +725,12 @@
       // caption pop-in, avatar pose, and the mouth-talk window all key off each
       // clip's actual [start, start+duration], not an estimate.
       const VO = {
-        1: { start: 0.55, dur: 1.2 }, 2: { start: 2.07, dur: 1.2 }, 3: { start: 3.69, dur: 2.4 },
-        4: { start: 6.51, dur: 2.72 }, 5: { start: 9.55, dur: 2.48 }, 6: { start: 12.35, dur: 2.8 },
-        7: { start: 15.57, dur: 2.8 }, 8: { start: 18.69, dur: 3.36 }, 9: { start: 22.37, dur: 3.6 },
-        10: { start: 26.39, dur: 4 }, 11: { start: 30.71, dur: 3.52 }, 12: { start: 34.65, dur: 3.84 },
+        1: { start: 0.55, dur: 0.704 }, 2: { start: 1.574, dur: 1.792 }, 3: { start: 3.786, dur: 1.984 },
+        4: { start: 6.19, dur: 1.6 }, 5: { start: 8.11, dur: 1.344 }, 6: { start: 9.774, dur: 1.856 },
+        7: { start: 11.95, dur: 1.664 }, 8: { start: 14.034, dur: 2.112 }, 9: { start: 16.466, dur: 1.28 },
+        10: { start: 18.066, dur: 1.92 }, 11: { start: 20.306, dur: 1.728 }, 12: { start: 22.454, dur: 2.304 },
+        13: { start: 25.078, dur: 2.304 }, 14: { start: 27.702, dur: 2.304 }, 15: { start: 30.426, dur: 2.688 },
+        16: { start: 33.534, dur: 2.688 },
       };
       const capOut = (n) => VO[n].start + VO[n].dur + 0.25;
 
@@ -722,34 +760,36 @@
       talk(VO[5].start, VO[5].start + VO[5].dur);
       showLine("#line-6", VO[6].start, capOut(6));
       talk(VO[6].start, VO[6].start + VO[6].dur);
+      showLine("#line-7", VO[7].start, capOut(7));
+      talk(VO[7].start, VO[7].start + VO[7].dur);
 
       // ---------- BEAT 4: GIẢI B (TRÁI PHIẾU) ----------
-      tl.to("#card-left", { scale: 0.96, opacity: 0.55, duration: 0.4, ease: "power2.out" }, VO[7].start);
-      tl.to("#card-right", { scale: 1.05, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[7].start);
-      pose(8, -75, VO[7].start, 0.3);
-      [7, 8, 9].forEach((n) => { showLine(`#line-${n}`, VO[n].start, capOut(n)); talk(VO[n].start, VO[n].start + VO[n].dur); });
+      tl.to("#card-left", { scale: 0.96, opacity: 0.55, duration: 0.4, ease: "power2.out" }, VO[8].start);
+      tl.to("#card-right", { scale: 1.05, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[8].start);
+      pose(8, -75, VO[8].start, 0.3);
+      [8, 9, 10, 11].forEach((n) => { showLine(`#line-${n}`, VO[n].start, capOut(n)); talk(VO[n].start, VO[n].start + VO[n].dur); });
 
       // ---------- BEAT 5: SO SÁNH ----------
-      tl.to("#card-left", { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[10].start);
-      tl.to("#card-right", { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[10].start);
-      pose(55, -55, VO[10].start, 0.3);
-      [10, 11].forEach((n) => { showLine(`#line-${n}`, VO[n].start, capOut(n)); talk(VO[n].start, VO[n].start + VO[n].dur); });
+      tl.to("#card-left", { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[12].start);
+      tl.to("#card-right", { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, VO[12].start);
+      pose(55, -55, VO[12].start, 0.3);
+      [12, 13, 14, 15].forEach((n) => { showLine(`#line-${n}`, VO[n].start, capOut(n)); talk(VO[n].start, VO[n].start + VO[n].dur); });
 
       // ---------- BEAT 6: PAYOFF ----------
-      pose(8, -8, VO[12].start, 0.3);
+      pose(8, -8, VO[16].start, 0.3);
       tl.fromTo(
         "#avatar-body",
         { scale: 1 },
         { scale: 1.04, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 },
-        VO[12].start,
+        VO[16].start,
       );
-      tl.fromTo("#verdict-left", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[12].start + 0.15);
-      tl.fromTo("#verdict-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[12].start + 0.25);
-      showLine("#line-12", VO[12].start, null); // holds to the end — no exit, this is the payoff
-      talk(VO[12].start, VO[12].start + VO[12].dur);
+      tl.fromTo("#verdict-left", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[16].start + 0.15);
+      tl.fromTo("#verdict-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[16].start + 0.25);
+      showLine("#line-16", VO[16].start, null); // holds to the end — no exit, this is the payoff
+      talk(VO[16].start, VO[16].start + VO[16].dur);
 
       // ---------- ambient background glows (finite, phase-opposed) ----------
-      const ROOT_DURATION = 39.79;
+      const ROOT_DURATION = 37.522;
       const glowCycle = 3.2;
       const glowReps = Math.max(0, Math.floor(ROOT_DURATION / glowCycle) - 1);
       tl.fromTo(

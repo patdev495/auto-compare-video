@@ -63,8 +63,9 @@ center** (x=540) with symmetric left/right padding — see Safe zone below.
   `--accent-keyword`.
 - **Bottom — avatar zone** (`y 1280–1920`, 640px): a flat CSS/SVG 2D teen host
   (`#avatar-host` top=1280, left=330, horizontally centered like every other zone) — original,
-  non-portrait character with a side-swept spiky undercut, faded sides, expressive brows, a dark
-  bomber jacket, white T-shirt and small accent chain. Arms swap rotation per beat (point-left /
+  non-portrait character with a playful side-swept **red** spiky undercut, faded sides, mischievous
+  brows, a slim teen silhouette (narrow shoulders and long, lean arms), a dark bomber jacket, white
+  T-shirt and small accent chain. Arms swap rotation per beat (point-left /
   point-right / shrug / explain / neutral-hold). Top raised from the original y=1360 so the
   head/face clears the platform caption/username band — see Safe zone.
 
