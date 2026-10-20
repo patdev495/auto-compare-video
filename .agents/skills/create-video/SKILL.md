@@ -6,7 +6,7 @@ description: >
   sinh bằng VieNeu TTS (local), Edge TTS (miễn phí) hoặc Vbee TTS, dựng bằng HyperFrames. Dùng skill này khi người dùng nói "làm video
   so sánh X vs Y", "phân biệt X và Y", "thêm video mới vào series", "tạo video so sánh
   kiến thức", hoặc yêu cầu bất kỳ video nào theo đúng format sẵn có của repo (thư mục
-  videos/<slug>/). KHÔNG dùng cho video ngoài format này (promo sản phẩm, video từ URL,
+  videos/{slug}/). KHÔNG dùng cho video ngoài format này (promo sản phẩm, video từ URL,
   slideshow, thêm phụ đề cho footage có sẵn).
 ---
 
@@ -16,8 +16,8 @@ description: >
 
 Sinh ra một thư mục `videos/<slug>/` hoàn chỉnh, tự chạy được (`npm run check` sạch,
 `npm run render` ra MP4), theo đúng layout/nhịp cố định của series: 2 card khái niệm ở nửa
-trên, caption chạy từng dòng ở giữa, avatar robot MC ở nửa dưới; kịch bản 12 dòng, tổng
-30-40s, voiceover TTS đo thời lượng thật để khớp animation.
+trên, caption chạy từng dòng ở giữa, avatar robot MC ở nửa dưới; kịch bản linh hoạt 10–16 dòng,
+voiceover TTS đo thời lượng thật để khớp animation.
 
 Mỗi video là một project HyperFrames độc lập. **Chỉ đổi nội dung — không đổi layout.**
 
@@ -37,7 +37,7 @@ Mọi đường dẫn dưới đây tính từ **root repo** (thư mục chứa 
 
 > ⚠️ Cả 2 video đã có đều là bản **8 dòng / 15-20s** thế hệ cũ. Chỉ copy **cấu trúc**
 > (CSS, HTML skeleton, helper JS, `@font-face`) từ chúng — còn **số dòng và nhịp beat phải
-> dùng bản 12 dòng / 30-40s** ở bước 1 và 4 dưới đây. Không copy y nguyên 8 dòng.
+> dùng Comparison Arc 10–16 dòng / 30-40s** ở bước 1 và 4 dưới đây. Không copy y nguyên 8 dòng.
 
 **Mọi lệnh `npm run *` chạy với cwd = `videos/<slug>/`**, không phải root repo.
 
@@ -49,8 +49,8 @@ Mọi đường dẫn dưới đây tính từ **root repo** (thư mục chứa 
   hỏi lại nếu phát âm TTS sai, hỏi lại nếu tổng thời lượng lệch ngoài 30-40s, và hỏi trước
   khi render (bước 9 — tốn thời gian/tài nguyên).
 - **`1`** — bỏ qua **tất cả** điểm dừng đó. Tự đề xuất và chốt luôn cặp khái niệm, kịch bản
-  12 dòng, icon; tự sinh VO và tự chấp nhận phát âm (chỉ sửa phiên âm khi rõ ràng sai so với
-  chính tả tiếng Việt thông thường); tự điều chỉnh nội dung nếu lệch 30-40s; chạy liên tục
+  10–16 dòng, icon; tự sinh VO và tự chấp nhận phát âm (chỉ sửa phiên âm khi rõ ràng sai so với
+  chính tả tiếng Việt thông thường); tự điều chỉnh nội dung nếu timing không phù hợp; chạy liên tục
   bước 1 → 9 kể cả render. Chỉ báo cáo khi xong toàn bộ, hoặc khi gặp lỗi cứng không tự sửa
   được (`npm run check` fail, TTS lỗi).
 
@@ -61,16 +61,20 @@ Mọi đường dẫn dưới đây tính từ **root repo** (thư mục chứa 
 Đề xuất phương án trước rồi để người dùng chọn/sửa (hoặc tự chốt nếu `AUTO_CREATE_VIDEO=1`):
 
 - **Cặp khái niệm A vs B** và `slug` kebab-case (ví dụ `dev-vs-devops`, `ram-vs-rom`).
-- **Góc so sánh** (1 câu) + **kịch bản đúng 12 dòng** theo nhịp chuẩn:
+- **Góc so sánh** (1 câu) + **kịch bản 10–16 dòng**. AI chọn số dòng theo độ phức tạp và phải
+  nêu lý do trước khi scaffold: 10 cho khác biệt đơn giản; 11–13 khi mỗi bên cần ví dụ; 14–16
+  chỉ khi cần boundary, exception, hoặc ví dụ bổ sung để tránh hiểu nhầm. Không thêm câu chỉ để
+  đạt một con số.
 
   | Dòng | Beat | Nội dung |
   |---|---|---|
   | 1-2 | hook | "Đây là A" / "Đây là B" |
   | 3 | nút thắt | "Sự khác nhau là gì?" |
-  | 4-6 | giải A | định nghĩa → đặc điểm nổi bật → 1 ví dụ thực tế / analogy |
-  | 7-9 | giải B | định nghĩa → đặc điểm nổi bật → 1 ví dụ thực tế / analogy |
-  | 10-11 | so sánh trực tiếp | đối chiếu song song 2 bên (beat mới trước payoff) |
-  | 12 | payoff | 1 dòng chốt, giữ khung hình tới hết — không thoát |
+  | 4–7 | giải A | 2–4 dòng: định nghĩa, đặc điểm, ví dụ hoặc boundary khi cần |
+  | tiếp theo | giải B | 2–4 dòng: định nghĩa, đặc điểm, ví dụ hoặc boundary khi cần |
+  | kế tiếp | so sánh trực tiếp | 2–3 dòng đối chiếu song song hai bên |
+  | trước payoff | nuance (tuỳ chọn) | tối đa 1 dòng cho ngoại lệ hoặc ranh giới quan trọng |
+  | cuối | payoff | 1 dòng chốt, giữ khung hình tới hết — không thoát |
 
 - **Icon 2 card** (mô tả bằng lời — sẽ vẽ CSS/SVG placeholder, **không** phụ thuộc ảnh ngoài;
   ví dụ terminal `</>` cho Dev, vòng lặp vô cực cho DevOps).
@@ -113,7 +117,7 @@ Nếu script lỗi hoặc môi trường không cho chạy, xem `references/scaf
 
 Sửa `videos/<slug>/scripts/generate-vo.mjs`:
 
-- `LINES` — 12 dòng kịch bản đã chốt (áp phiên âm TTS nếu cần, xem bước 1).
+- `LINES` — 10–16 dòng kịch bản đã chốt (áp phiên âm TTS nếu cần, xem bước 1).
 - **Giữ nguyên** cách tính `REPO_ROOT` (đọc `.env` **dùng chung ở root**) — không tạo `.env`
   riêng cho video mới.
 - **Giữ nguyên** `VOICE_CODE = VBEE_VOICE_CODE || "n_hanoi_male_protrainer_education_vc"` —
@@ -139,18 +143,16 @@ node scripts/generate-vo.mjs
 
 ### 4. Tính timing
 
-Dùng đúng công thức gap đã kiểm chứng (giữ nhịp giống bản gốc), áp cho 12 dòng:
+Sau khi có `durations.json`, chạy helper với beat map đã duyệt; nó xác thực arc 10–16 dòng và in
+ra `start`, `duration`, `beat`, `rootDuration` để chép vào composition:
 
-- `start[1] = 0.55`
-- Trong cùng một beat (1→2, 4→5, 5→6, 7→8, 8→9, 10→11): gap = **0.3-0.35s**
-- Chuyển beat (2→3, 3→4, 6→7, 9→10, 11→12): gap = **0.4-0.45s**
-- `capOut(n) = start[n] + dur[n] + 0.25` (buffer trước khi dòng thoát)
-- `ROOT_DURATION ≈ start[12] + dur[12] + 1.3` (outro hold), làm tròn — **phải rơi trong
-  30-40s**.
+```bash
+node scripts/plan-timing.mjs assets/vo/durations.json --beats hook,hook,question,reveal-a,reveal-a,reveal-b,reveal-b,compare,compare,payoff
+```
 
-Nếu tổng chưa đạt 30s: **thêm câu / ví dụ** vào giải A/B hoặc vòng so sánh trực tiếp —
-**không** kéo giãn gap để lấp thời gian (phá nhịp fast-cut của house style). Nếu vượt 40s:
-cắt câu hoặc tăng `speed_rate` của Vbee.
+`capOut(n) = start[n] + dur[n] + 0.25`; payoff là dòng cuối, không phải `line-12` cố định.
+Nếu runtime không phù hợp, thêm hoặc cắt **giải thích có ý nghĩa** trong các beat được phép —
+không kéo giãn gap để lấp thời gian.
 
 Ví dụ tính đầy đủ: `references/script-and-timing.md`.
 
@@ -161,9 +163,9 @@ Copy cấu trúc từ `videos/dev-vs-devops/index.html`, **giữ nguyên**: bi�
 toàn bộ helper JS `showLine` / `pose` / `headTilt` / `talk` / glow ambient, **và khối
 `@font-face` trong `<head>`**.
 
-Chỉ đổi: `<title>`, 2 icon card, `.card-label`, 12 dòng `.caption-line`, `data-duration` của
-`#root` / `#scene`, 12 thẻ `<audio>`, object `VO`, `ROOT_DURATION`, và timeline JS (nhân bản
-khối `showLine` / `talk` theo nhịp 12 dòng).
+Chỉ đổi: `<title>`, 2 icon card, `.card-label`, 10–16 dòng `.caption-line`, `data-duration` của
+`#root` / `#scene`, số thẻ `<audio>` tương ứng, object `VO`, `ROOT_DURATION`, và timeline JS
+theo beat map. Quy tắc chi tiết nằm trong `references/composition.md`.
 
 Quy tắc chi tiết bắt buộc đọc trước khi viết HTML — cấu trúc caption, màu keyword, font,
 icon, timeline: **`references/composition.md`**.
@@ -219,11 +221,12 @@ Xác nhận file MP4 đã xuất hiện trong `renders/` trước khi báo hoàn
 ```
 videos/ram-vs-rom/
 ├── BRIEF.md                    # intent + assets + notes (rút gọn)
-├── index.html                  # 12 caption line, 12 <audio>, ROOT_DURATION ≈ 34
+├── index.html                  # 10–16 caption line/audio, ROOT_DURATION từ timing helper
 ├── package.json                # có sync-channel + hook pre*
-├── assets/vo/line-1..12.mp3
+├── assets/vo/line-1..N.mp3
 ├── assets/vo/durations.json
-├── scripts/generate-vo.mjs     # LINES = 12 dòng RAM vs ROM
+├── scripts/generate-vo.mjs     # LINES = kịch bản RAM vs ROM đã duyệt
+├── scripts/plan-timing.mjs     # xác thực beat map + tính timing cho 10–16 dòng
 ├── scripts/sync-channel.mjs    # copy nguyên văn
 └── renders/ram-vs-rom.mp4
 ```
@@ -240,7 +243,7 @@ workflow HyperFrames chung.
 - **Không** tạo `.env` riêng cho video mới — luôn dùng `.env` ở root repo.
 - **Không** commit `.env` hay in `VBEE_ACCESS_TOKEN` ra output/log.
 - **Không** thêm `CLAUDE.md` / `AGENTS.md` riêng trong `videos/<slug>/`.
-- **Không** đổi độ dài ra ngoài 30-40s mà không hỏi lại (trừ khi `AUTO_CREATE_VIDEO=1`).
+- **Không** dùng ít hơn 10 hoặc nhiều hơn 16 Narration Line; không thêm filler để đạt line count.
 - **Không** quên `scripts/sync-channel.mjs` + wiring `pre*` trong `package.json` (bước 2) —
   thiếu là `#eyebrow` đứng yên theo text tĩnh copy từ template thay vì đọc `CHANNEL` từ `.env`.
 - **Không** dùng `<link>` Google Fonts (lint `google_fonts_import`) hay bỏ trống `@font-face` —

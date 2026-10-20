@@ -5,7 +5,8 @@
 //   1. hyperframes init (blank / portrait / non-interactive)
 //   2. un-nest the duplicate <slug>/<slug>/ folder the CLI creates
 //   3. delete the per-video CLAUDE.md / AGENTS.md init generates (root ones are shared)
-//   4. copy scripts/sync-channel.mjs + scripts/generate-vo.mjs from the reference video
+//   4. copy scripts/sync-channel.mjs + scripts/generate-vo.mjs from the reference video,
+//      plus the skill-owned variable-line timing helper
 //   5. wire the sync-channel npm script + pre* hooks into package.json
 //
 // Usage:  node .agents/skills/create-video/scripts/scaffold.mjs <slug> [--repo-root <path>]
@@ -19,7 +20,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const HF_FALLBACK_VERSION = "0.7.58";
 const REFERENCE_VIDEOS = ["dev-vs-devops", "thien-thach-vs-sao-bang"];
-const COPY_SCRIPTS = ["sync-channel.mjs", "generate-vo.mjs"];
+const REFERENCE_SCRIPTS = ["sync-channel.mjs", "generate-vo.mjs"];
+const SKILL_SCRIPTS = ["plan-timing.mjs"];
 const NPM_SCRIPTS = {
   "sync-channel": "node scripts/sync-channel.mjs",
   predev: "npm run sync-channel",
@@ -81,11 +83,11 @@ if (!REPO_ROOT || !isRepoRoot(REPO_ROOT)) {
 
 // ---------- reference video (source of scripts + pinned hyperframes version) ----------
 const reference = REFERENCE_VIDEOS.map((name) => path.join(REPO_ROOT, "videos", name)).find(
-  (dir) => COPY_SCRIPTS.every((f) => fs.existsSync(path.join(dir, "scripts", f))),
+  (dir) => REFERENCE_SCRIPTS.every((f) => fs.existsSync(path.join(dir, "scripts", f))),
 );
 if (!reference) {
   fail(
-    `Không tìm thấy video tham chiếu có đủ ${COPY_SCRIPTS.join(" + ")} trong scripts/.\n` +
+    `Không tìm thấy video tham chiếu có đủ ${REFERENCE_SCRIPTS.join(" + ")} trong scripts/.\n` +
       `  Đã thử: ${REFERENCE_VIDEOS.join(", ")}`,
   );
 }
@@ -162,13 +164,22 @@ for (const f of ["CLAUDE.md", "AGENTS.md"]) {
 console.log("[4/5] copy scripts từ video tham chiếu …");
 const targetScripts = path.join(target, "scripts");
 fs.mkdirSync(targetScripts, { recursive: true });
-for (const f of COPY_SCRIPTS) {
+for (const f of REFERENCE_SCRIPTS) {
   const to = path.join(targetScripts, f);
   if (fs.existsSync(to)) {
     console.log(`      - giữ ${f} (đã có)`);
     continue;
   }
   fs.copyFileSync(path.join(reference, "scripts", f), to);
+  console.log(`      - copy ${f}`);
+}
+for (const f of SKILL_SCRIPTS) {
+  const to = path.join(targetScripts, f);
+  if (fs.existsSync(to)) {
+    console.log(`      - giữ ${f} (đã có)`);
+    continue;
+  }
+  fs.copyFileSync(path.join(__dirname, f), to);
   console.log(`      - copy ${f}`);
 }
 
@@ -212,8 +223,8 @@ if (missingEnv) {
 }
 console.log("\nBước tiếp theo (skill create-video):");
 console.log(`  0. cd videos/${slug} && npm install   (deps, gồm edge-tts-universal)`);
-console.log(`  3. sửa LINES (12 dòng) trong videos/${slug}/scripts/generate-vo.mjs rồi chạy`);
+console.log(`  3. sửa LINES (10–16 dòng) trong videos/${slug}/scripts/generate-vo.mjs rồi chạy`);
 console.log(`     cd videos/${slug} && node scripts/generate-vo.mjs`);
-console.log("  4. tính timing từ assets/vo/durations.json (references/script-and-timing.md)");
+console.log("  4. chạy scripts/plan-timing.mjs với beat map đã duyệt (references/script-and-timing.md)");
 console.log(`  5. dựng index.html từ videos/${path.basename(reference)}/index.html`);
 console.log("     (references/composition.md)");

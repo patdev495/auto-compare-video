@@ -53,12 +53,12 @@ The source of intent and scope for one Video: its concept pair, explanatory angl
 _Avoid_: Implementation notes, composition
 
 **Target Duration**:
-The expected short-form length of a Video, normally around 15–20 seconds. It is a pacing guideline rather than a hard limit; a longer Video is valid when needed for a clear, comfortable explanation.
+The expected short-form length of a Video, normally around 30–40 seconds. It is a pacing guideline derived from the measured voiceover and the meaningful explanation required, not a hard limit.
 _Avoid_: Maximum duration, fixed runtime
 
 **Comparison Arc**:
-The mandatory explanatory sequence of a Video: identify both concepts, raise the distinction, explain the first concept, explain the second, then land a concise payoff. Its beats are fixed, while the number and duration of Narration Lines within them may vary.
-_Avoid_: Eight-line script, fixed narration template
+The mandatory explanatory sequence of a Video: identify both concepts, raise the distinction, explain the first concept, explain the second, compare them directly, then land a concise payoff. Its beats are fixed; AI chooses 10–16 Narration Lines within their documented ranges and explains why the chosen count is warranted.
+_Avoid_: Eight-line script, twelve-line script, fixed narration template
 
 **Concept Visual**:
 The top-zone representation of one concept in a Video. It is Video-specific and may use a supplied asset or a CSS/SVG placeholder, provided it makes the A/B distinction clear and complies with the Design Contract.

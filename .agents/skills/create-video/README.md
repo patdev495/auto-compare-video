@@ -9,9 +9,10 @@ sang định dạng skill của **Antigravity / Antigravity CLI**.
 .agents/skills/create-video/
 ├── SKILL.md                        ← định nghĩa skill (frontmatter + hướng dẫn)
 ├── scripts/
-│   └── scaffold.mjs                ← tự khởi tạo videos/<slug>/ (bước 2: init, scripts, deps)
+│   ├── scaffold.mjs                ← tự khởi tạo videos/<slug>/ (init, scripts, deps)
+│   └── plan-timing.mjs             ← xác thực beat map + tính timing 10–16 dòng
 └── references/
-    ├── script-and-timing.md        ← kịch bản 12 dòng + công thức timing + phiên âm TTS
+    ├── script-and-timing.md        ← Comparison Arc 10–16 dòng + timing + phiên âm TTS
     ├── composition.md              ← quy tắc dựng index.html (caption, màu, font, timeline)
     └── scaffold-manual.md          ← khởi tạo bằng tay khi scaffold.mjs không chạy được
 ```

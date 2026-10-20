@@ -38,16 +38,18 @@ hướng dẫn phân cấp từ cwd lên root nên không cần bản riêng cho
 rm -f CLAUDE.md AGENTS.md
 ```
 
-## 4. Copy 2 script dùng chung
+## 4. Copy script dùng chung và timing helper
 
 ```bash
 cp ../dev-vs-devops/scripts/sync-channel.mjs scripts/
 cp ../dev-vs-devops/scripts/generate-vo.mjs  scripts/
+cp ../../.claude/skills/create-video/scripts/plan-timing.mjs scripts/
 ```
 
 - `sync-channel.mjs` — copy **nguyên văn, không sửa**. Nó đọc `CHANNEL` từ `.env` ở root repo
   và ghi vào `#eyebrow` trong `index.html`.
 - `generate-vo.mjs` — sẽ sửa `LINES` ở bước 3 của skill; giữ nguyên `REPO_ROOT` và `VOICE_CODE`.
+- `plan-timing.mjs` — nhận `durations.json` và beat map 10–16 dòng để tính timing xác định.
 
 ## 5. Nối npm script vào `package.json`
 

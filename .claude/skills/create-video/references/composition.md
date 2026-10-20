@@ -58,19 +58,19 @@ lục lam = tên khái niệm**. Không đảo, không thêm màu thứ ba.
    Không dùng ảnh ngoài / không fetch. Icon dùng offset pixel cố định phải kiểm tra lại tràn
    khi đổi; icon dùng grid `place-items: center` thì tự thích ứng.
 3. `.card-label` — tên khái niệm A / B.
-4. **12 dòng** `.caption-line` với `id="line-1"` … `id="line-12"` (template gốc chỉ có 8 — phải
-   thêm 4 dòng).
+4. **10–16 dòng** `.caption-line` với `id="line-1"` … `id="line-N"`; `N` là số Narration Line
+   đã được duyệt.
 5. `data-duration` của `#root` và `#scene` = `ROOT_DURATION`.
-6. **12 thẻ `<audio>`** `id="vo-1"` … `id="vo-12"`, `src="assets/vo/line-N.mp3"`, kèm
+6. Số thẻ `<audio>` tương ứng `id="vo-1"` … `id="vo-N"`, `src="assets/vo/line-N.mp3"`, kèm
    `data-start` / `data-duration` (số thật từ `assets/vo/durations.json`) và
    `data-track-index="20"`.
-7. Object `VO` trong script — 12 entry `{ start, dur }`, trùng khớp từng số với thẻ `<audio>`.
+7. Object `VO` trong script — `N` entry `{ start, dur }`, trùng khớp từng số với thẻ `<audio>`.
 8. `const ROOT_DURATION = <số đã tính>;`
-9. **Timeline JS** — nhân bản khối `showLine` / `talk` / `pose` theo nhịp 12 dòng (xem dưới).
+9. **Timeline JS** — tạo khối `showLine` / `talk` / `pose` theo beat map đã duyệt (xem dưới).
 
-## Timeline theo nhịp 12 dòng
+## Timeline theo beat map 10–16 dòng
 
-Template gốc có 5 beat cho 8 dòng. Bản 12 dòng có **6 beat**:
+Template gốc có 5 beat cho 8 dòng. Video mới dùng arc đã được helper xác thực:
 
 ```js
 const capOut = (n) => VO[n].start + VO[n].dur + 0.25;
@@ -83,28 +83,30 @@ pose(8, -115, VO[2].start, 0.3);   showLine("#line-2", VO[2].start, capOut(2)); 
 pose(55, -55, VO[3].start, 0.35);  headTilt(6, VO[3].start, 0.35);
 showLine("#line-3", VO[3].start, capOut(3));  talk(...);  headTilt(0, capOut(3), 0.3);
 
-// BEAT 3: GIẢI A (line 4-5-6) — active-side emphasis: card-left sáng, card-right dim
+// BEAT 3: GIẢI A (2–4 line) — active-side emphasis: card-left sáng, card-right dim
 tl.to("#card-left",  { scale: 1.05, opacity: 1,    duration: 0.4, ease: "power2.out" }, VO[4].start);
 tl.to("#card-right", { scale: 0.96, opacity: 0.55, duration: 0.4, ease: "power2.out" }, VO[4].start);
 pose(75, -8, VO[4].start, 0.3);
-// 3 lệnh showLine + talk cho line 4, 5, 6
+// Một showLine + talk cho từng line thuộc reveal-a
 
-// BEAT 4: GIẢI B (line 7-8-9) — đảo emphasis sang card-right
-// 3 lệnh showLine + talk cho line 7, 8, 9
+// BEAT 4: GIẢI B (2–4 line) — đảo emphasis sang card-right
+// Một showLine + talk cho từng line thuộc reveal-b
 
-// BEAT 5: SO SÁNH TRỰC TIẾP (line 10-11) — BEAT MỚI, không có trong template 8 dòng.
+// BEAT 5: SO SÁNH TRỰC TIẾP (2–3 line) — BEAT MỚI, không có trong template 8 dòng.
 // Trả cả 2 card về full opacity/scale 1 (đối chiếu song song, không bên nào được ưu tiên),
-// có thể nhấp nháy nhẹ luân phiên 2 card theo 2 dòng. 2 lệnh showLine + talk.
+// có thể nhấp nháy nhẹ luân phiên 2 card theo từng dòng. Một nuance line (nếu có) chỉ được
+// dùng để làm rõ boundary/exception, không để kéo dài runtime.
 
-// BEAT 6: PAYOFF (line 12) — cả 2 card scale 1 / opacity 1, pose neutral (8, -8),
+// BEAT 6: PAYOFF (line cuối) — cả 2 card scale 1 / opacity 1, pose neutral (8, -8),
 // avatar-body punch nhẹ (yoyo repeat 1), verdict badge pop:
-tl.fromTo("#verdict-left",  { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[12].start + 0.15);
-tl.fromTo("#verdict-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[12].start + 0.25);
-showLine("#line-12", VO[12].start, null); // null = giữ tới hết, KHÔNG thoát
-talk(VO[12].start, VO[12].start + VO[12].dur);
+const LAST_LINE = Object.keys(VO).length;
+tl.fromTo("#verdict-left",  { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[LAST_LINE].start + 0.15);
+tl.fromTo("#verdict-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, VO[LAST_LINE].start + 0.25);
+showLine(`#line-${LAST_LINE}`, VO[LAST_LINE].start, null); // null = giữ tới hết, KHÔNG thoát
+talk(VO[LAST_LINE].start, VO[LAST_LINE].start + VO[LAST_LINE].dur);
 ```
 
-- Dòng payoff luôn truyền `null` cho tham số exit → giữ khung hình tới hết video.
+- Dòng payoff (dòng cuối, lấy từ beat map) luôn truyền `null` cho tham số exit → giữ khung hình tới hết video.
 - Mỗi dòng caption **chỉ một dòng hiện tại một thời điểm** — không animate từng chữ (đây là
   format fast-cut, không phải lyric video).
 - Không dùng shader transition — cả video là **một scene liên tục**, các beat là phase change

@@ -141,7 +141,7 @@ Cách nhanh nhất — dùng **Claude Code**, gọi skill có sẵn kèm cặp k
 ```
 
 Chỉ cần lệnh này là skill tự động làm hết phần còn lại: hỏi/xác nhận lại cặp khái niệm + kịch bản
-12 dòng (trừ khi `AUTO_CREATE_VIDEO=1` — xem bước 1), tự khởi tạo project, sinh giọng đọc VO, dựng
+10–16 dòng do AI chọn theo độ phức tạp (trừ khi `AUTO_CREATE_VIDEO=1` — xem bước 1), tự khởi tạo project, sinh giọng đọc VO, dựng
 composition đúng theo `DESIGN.md`, và chạy `npm run check` — xem chi tiết trong
 [`.claude/skills/create-video/SKILL.md`](.claude/skills/create-video/SKILL.md).
 

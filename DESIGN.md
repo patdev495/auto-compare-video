@@ -109,19 +109,20 @@ with no `top`/`left` adapt automatically.
 
 ## Rhythm
 
-Target total: **30–40s** per video (raised from the original 15-20s demo — more room per
-concept). Timing is VO-driven (real TTS clip durations, not fixed beat-seconds — see the
-`create-video` skill's timing-gap formula), but the beat *order* and *line budget* are fixed:
+Target total: **30–40s** per video. Timing is VO-driven (real TTS clip durations, not fixed
+beat-seconds — see the `create-video` skill's timing helper). The beat order is fixed, but AI
+chooses a **10–16 line** budget that earns every extra line with a needed explanation:
 
-`hook(2 dòng) → question(1 dòng) → reveal-A(3 dòng) → reveal-B(3 dòng) → so-sánh-trực-tiếp(2 dòng) → payoff-hold(1 dòng)`
-≈ 12 dòng thoại. `reveal-A`/`reveal-B` each grew from 2 lines to 3 (definition, key trait, one
-concrete example/analogy per side) and a new side-by-side contrast beat (`so-sánh-trực-tiếp`)
-sits right before the verdict — that's where the extra 15-20s of runtime goes, not into slower
-pacing. Energy: punchy open, a beat of pause at the question, two deeper reveal holds, a settled
-payoff dwell (≥1s per the climax-dwell rule). If the natural total falls short of 30s, add
-another sentence or example line — never stretch inter-line gaps to pad time (that breaks the
-fast-cut house style). No shader transitions — this is one continuous scene, not scene cuts;
-all beats are internal phase changes on one timeline.
+`hook(2) → question(1) → reveal-A(2–4) → reveal-B(2–4) → compare(2–3) → payoff-hold(1)`,
+with at most one optional `nuance` line. This yields 10–16 Narration Lines. Use 10 for a simple
+distinction, 11–13 for a typical definition-plus-example comparison, and 14–16 only when a
+boundary, exception, or essential extra example improves comprehension. The proposed line count
+and its rationale are reviewed before production unless `AUTO_CREATE_VIDEO=1`.
+
+Energy: punchy open, a beat of pause at the question, two reveal holds, a direct comparison, and
+a settled payoff dwell (≥1s per the climax-dwell rule). If the natural runtime is too short or
+long, add or remove meaningful explanation — never stretch inter-line gaps to pad time. No shader
+transitions: this is one continuous scene, and all beats are internal phase changes on one timeline.
 
 ## Do's and don'ts
 
