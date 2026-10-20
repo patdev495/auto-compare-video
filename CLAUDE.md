@@ -106,3 +106,17 @@ Fix all errors before presenting the result. Warnings should be reviewed before 
 4. Videos use `muted` with a separate `<audio>` element for the audio track
 5. Sub-compositions use `data-composition-src="compositions/file.html"` to reference other HTML files
 6. Only deterministic logic — no `Date.now()`, no `Math.random()`, no network fetches
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs are tracked locally as Markdown files under `.scratch/`. External PRs are not a triage surface. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the standard triage labels plus `done` for completed issues. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Use a single-context layout, with domain documentation at the repository root. See `docs/agents/domain.md`.
