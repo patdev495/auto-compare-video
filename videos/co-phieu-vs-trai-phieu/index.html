@@ -437,6 +437,105 @@
         border-radius: 50%;
         background: var(--accent-cyan);
       }
+
+      /* ---------- illustrated finance host: original, non-portrait character ---------- */
+      #avatar-body {
+        left: 88px;
+        top: 205px;
+        background: #203d42;
+        border-radius: 48px 48px 22px 22px;
+        overflow: hidden;
+      }
+      .shirt {
+        position: absolute;
+        left: 72px;
+        top: 0;
+        width: 96px;
+        height: 150px;
+        background: var(--fg);
+        clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%);
+      }
+      .tie {
+        position: absolute;
+        left: 106px;
+        top: 26px;
+        width: 28px;
+        height: 116px;
+        background: var(--accent-pink);
+        clip-path: polygon(0 0, 100% 0, 76% 29%, 80% 85%, 50% 100%, 20% 85%, 24% 29%);
+      }
+      #avatar-head {
+        left: 105px;
+        top: 28px;
+        background: #dca47f;
+        border-radius: 50% 50% 44% 44%;
+        overflow: visible;
+      }
+      .hair-base {
+        position: absolute;
+        top: -20px;
+        left: 10px;
+        width: 190px;
+        height: 95px;
+        background: #142126;
+        border-radius: 64% 28% 24% 18%;
+        transform: skewX(-14deg) rotate(-8deg);
+        transform-origin: bottom left;
+      }
+      .hair-spike {
+        position: absolute;
+        width: 42px;
+        height: 88px;
+        background: #142126;
+        border-radius: 82% 20% 20% 14%;
+        transform-origin: bottom center;
+      }
+      .spike-1 { top: -38px; left: 24px; transform: rotate(-32deg); }
+      .spike-2 { top: -48px; left: 64px; transform: rotate(-18deg); }
+      .spike-3 { top: -40px; left: 108px; transform: rotate(-5deg); }
+      .hair-fade {
+        position: absolute;
+        top: 30px;
+        width: 25px;
+        height: 72px;
+        background: linear-gradient(#314247 0%, #dca47f 100%);
+      }
+      .fade-left { left: -2px; border-radius: 60% 12% 45% 25%; }
+      .fade-right { right: -2px; border-radius: 12% 60% 25% 45%; }
+      .eye {
+        top: 110px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #172033;
+      }
+      #eye-left { left: 67px; }
+      #eye-right { left: 129px; }
+      #mouth {
+        top: 158px;
+        left: 82px;
+        width: 46px;
+        height: 8px;
+        border-radius: 999px;
+        background: #8e3b46;
+      }
+      .arm {
+        top: 214px;
+        width: 40px;
+        height: 184px;
+        border-radius: 22px;
+        background: #203d42;
+      }
+      #arm-left { left: 65px; }
+      #arm-right { left: 315px; }
+      .hand {
+        bottom: -18px;
+        left: 2px;
+        width: 36px;
+        height: 42px;
+        border-radius: 45% 45% 55% 55%;
+        background: #dca47f;
+      }
     </style>
   </head>
   <body>
@@ -493,14 +592,18 @@
         <!-- bottom: 2D avatar host -->
         <div data-hf-id="hf-bs5l" id="avatar-host">
           <div data-hf-id="hf-4617" id="avatar-body">
-            <div data-hf-id="hf-cl01" id="chest-light"></div>
+            <div class="shirt"></div>
+            <div class="tie"></div>
           </div>
           <div data-hf-id="hf-9f5w" id="arm-left" class="arm"><div data-hf-id="hf-foeb" class="hand"></div></div>
           <div data-hf-id="hf-2ovv" id="arm-right" class="arm"><div data-hf-id="hf-xbk3" class="hand"></div></div>
           <div data-hf-id="hf-bf2l" id="avatar-head">
-            <div data-hf-id="hf-an01" id="antenna-stem"></div>
-            <div data-hf-id="hf-an02" id="antenna-tip"></div>
-            <div data-hf-id="hf-vs01" id="visor"></div>
+            <div class="hair-base"></div>
+            <div class="hair-spike spike-1"></div>
+            <div class="hair-spike spike-2"></div>
+            <div class="hair-spike spike-3"></div>
+            <div class="hair-fade fade-left"></div>
+            <div class="hair-fade fade-right"></div>
             <div data-hf-id="hf-y4ty" class="eye" id="eye-left"></div>
             <div data-hf-id="hf-7vpp" class="eye" id="eye-right"></div>
             <div data-hf-id="hf-6l22" id="mouth"></div>
