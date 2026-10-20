@@ -1,26 +1,32 @@
 # DESIGN.md — "So Sánh Kiến Thức" template
 
 **Concept angle:** A fast-paced myth-busting showdown — two icons face off in a top-frame
-split, a bold pink-accented caption calls the verdict line by line, and a flat 2D host
+split, a bold amber-accented caption calls the verdict line by line, and a flat 2D host
 physically points the answer home. Motion reads as a game-show buzzer round, not a lecture.
 
 ## Colors
 
-| Token           | Value     | Use                                              |
-| --------------- | --------- | ------------------------------------------------- |
-| `--bg`          | `#0D0A1A` | Root background (deep indigo-black)              |
-| `--panel`       | `#17122C` | Image card surface                               |
-| `--panel-edge`  | `#2B2350` | Card border / hairline                            |
-| `--fg`          | `#F3F1FF` | Primary text                                      |
-| `--fg-dim`      | `#9089B0` | Secondary / inactive text                         |
-| `--accent-pink` | `#FF4FA3` | Keyword highlight — the "difference" word         |
-| `--accent-cyan` | `#37E6C4` | Topic names, VS badge accent, avatar accent        |
+| Token               | Value     | Use                                              |
+| ------------------- | --------- | ------------------------------------------------- |
+| `--bg`              | `#0A1412` | Root background (deep pine-black)                |
+| `--panel`           | `#112420` | Image card surface                               |
+| `--panel-edge`      | `#1F3D36` | Card border / hairline                            |
+| `--fg`              | `#F4F7EE` | Primary text (warm off-white)                    |
+| `--fg-dim`          | `#8CA79D` | Secondary / inactive text                         |
+| `--accent-keyword`  | `#FFC53D` | Keyword highlight — the "difference" word         |
+| `--accent-identity` | `#B79CFF` | Topic names, VS badge accent, avatar accent        |
 
-Dark, saturated background: tech/knowledge content stays legible, and the deep indigo bed makes
-the pink keyword pop hardest against the cool cyan identity color. Two accent hues sit opposite
-on the wheel (pink for emphasis, cyan for identity) — chosen as a deliberate departure from the
-series' original red/gold palette so this generation of videos reads as visually distinct from
-earlier public uploads of the same topics.
+Dark, saturated pine-green background: tech/knowledge content stays legible, and the deep green
+bed makes the sunny amber keyword pop hardest against the soft lavender identity color. Two accent
+hues sit opposite on the wheel (amber/yellow for emphasis, violet for identity) — a deliberate
+departure from the previous indigo + pink/cyan palette, and from the series' original red/gold,
+so this generation of videos reads as visually distinct from earlier uploads of the same topics.
+
+Contrast (against `--bg`): `--fg` ≈ 17:1, `--accent-keyword` ≈ 11:1, `--accent-identity` ≈ 8:1,
+`--fg-dim` ≈ 6:1 — all clear WCAG AA for in-feed caption sizes.
+
+Token names are semantic (`keyword` / `identity`) rather than hue-based, so future palette swaps
+don't require renaming anything.
 
 ## Typography
 
@@ -54,7 +60,7 @@ center** (x=540) with symmetric left/right padding — see Safe zone below.
   reads as attached, not floating.
 - **Middle — caption zone** (`y 840–1300`, 460px): one caption line visible at a time,
   centered, max-width 860px, left=110 (symmetric 110px margins). Keyword spans get
-  `--accent-pink`.
+  `--accent-keyword`.
 - **Bottom — avatar zone** (`y 1280–1920`, 640px): a flat CSS/SVG 2D robot host character
   (`#avatar-host` top=1280, left=330, horizontally centered like every other zone) — rounded-rect
   head with a glowing antenna tip, an LED-style visor with two square eyes, a speaker-bar mouth,
@@ -83,11 +89,11 @@ with no `top`/`left` adapt automatically.
 
 ## Background layer
 
-- Soft `--accent-pink` radial glow behind the VS badge, low opacity, gentle breathing pulse
-  (finite repeat).
+- Soft `--accent-keyword` (amber) radial glow behind the VS badge, low opacity, gentle breathing
+  pulse (finite repeat).
 - Ghost eyebrow word ("SO SÁNH") oversized at 4% opacity behind the caption zone, static.
-- Soft `--accent-cyan` glow behind the avatar's head, gentle breathing pulse, phase-opposed
-  to the top glow (per `sine-wave-loop` phase-opposition rule).
+- Soft `--accent-identity` (lavender) glow behind the avatar's head, gentle breathing pulse,
+  phase-opposed to the top glow (per `sine-wave-loop` phase-opposition rule).
 
 ## Motion
 
@@ -128,8 +134,8 @@ transitions: this is one continuous scene, and all beats are internal phase chan
 
 - Do keep the 3-zone layout byte-for-byte identical across topics — only text, image
   content, and the two card images change when this becomes a real template instance.
-- Do keep keyword-pink reserved for the *difference*, not the topic names (topic names use
-  cyan) — the color coding itself teaches the viewer where to look.
+- Do keep `--accent-keyword` (amber) reserved for the *difference*, not the topic names (topic
+  names use `--accent-identity`) — the color coding itself teaches the viewer where to look.
 - Do keep every zone's content within the safe zone (above) — centered on x=540 with symmetric
   `SAFE_MARGIN` on both sides, avatar head clear of `SAFE_BOTTOM`.
 - Don't add a 4th zone or reorder the three zones — the format's recognizability depends on

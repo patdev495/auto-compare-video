@@ -65,7 +65,7 @@ Mọi đường dẫn dưới đây tính từ **root repo** (thư mục chứa 
   nêu lý do trước khi scaffold: 10 cho khác biệt đơn giản; 11–13 khi mỗi bên cần ví dụ; 14–16
   chỉ khi cần boundary, exception, hoặc ví dụ bổ sung để tránh hiểu nhầm. Không thêm câu chỉ để
   đạt một con số.
-
+-**Chỉ dẫn**: Cố gắng đưa ra những điểm cốt lõi nhất của mỗi khái niệm.
   | Dòng | Beat | Nội dung |
   |---|---|---|
   | 1-2 | hook | "Đây là A" / "Đây là B" |

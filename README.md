@@ -43,6 +43,9 @@ Một số demo video ngắn dạng TikTok/Reels/Shorts đã xuất bản:
 |---|---|---|
 | Thiên thạch vs Sao băng | Meteorite vs Meteor | [`videos/thien-thach-vs-sao-bang/`](videos/thien-thach-vs-sao-bang/) |
 | Dev vs DevOps | "Dev xây, DevOps vận hành" | [`videos/dev-vs-devops/`](videos/dev-vs-devops/) 
+| RAM vs ROM | "RAM làm việc, ROM khởi động" | [`videos/ram-vs-rom/`](videos/ram-vs-rom/) |
+| Authentication vs Authorization | "Bạn là ai" vs "Bạn được làm gì" | [`videos/authentication-vs-authorization/`](videos/authentication-vs-authorization/) |
+| Cổ phiếu vs Trái phiếu | Quyền sở hữu/tăng trưởng vs cho vay/thu nhập ổn định | [`videos/co-phieu-vs-trai-phieu/`](videos/co-phieu-vs-trai-phieu/) |
 
 ## 📌 Tính năng nổi bật
 

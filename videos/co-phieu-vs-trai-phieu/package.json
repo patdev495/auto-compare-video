@@ -1,0 +1,19 @@
+{
+  "name": "co-phieu-vs-trai-phieu",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.181 preview",
+    "check": "npx --yes hyperframes@0.8.181 check",
+    "render": "npx --yes hyperframes@0.8.181 render",
+    "publish": "npx --yes hyperframes@0.8.181 publish",
+    "sync-channel": "node scripts/sync-channel.mjs",
+    "predev": "npm run sync-channel",
+    "precheck": "npm run sync-channel",
+    "prerender": "npm run sync-channel",
+    "prepublish": "npm run sync-channel"
+  },
+  "dependencies": {
+    "edge-tts-universal": "^1.4.0"
+  }
+}

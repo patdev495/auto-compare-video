@@ -44,6 +44,8 @@ A few short published TikTok/Reels/Shorts demo videos:
 |---|---|---|
 | Meteorite vs Meteor | Meteorite vs Meteor | [`videos/thien-thach-vs-sao-bang/`](videos/thien-thach-vs-sao-bang/) |
 | Dev vs DevOps | "Dev builds, DevOps operates" | [`videos/dev-vs-devops/`](videos/dev-vs-devops/) |
+| RAM vs ROM | "RAM works, ROM starts up" | [`videos/ram-vs-rom/`](videos/ram-vs-rom/) |
+| Stocks vs Bonds | Ownership/growth vs lending/stable income | [`videos/co-phieu-vs-trai-phieu/`](videos/co-phieu-vs-trai-phieu/) |
 
 ## 📌 Key Features
 
